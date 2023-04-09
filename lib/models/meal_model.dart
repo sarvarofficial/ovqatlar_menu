@@ -7,7 +7,6 @@ class Meal {
   final int cost;
   final String categoryId;
   final List ingredient;
-  bool isLike;
 
   Meal({
     required this.title,
@@ -15,7 +14,6 @@ class Meal {
     required this.id,
     required this.cost,
     required this.description,
-    required this.isLike,
     required this.prepairingTime,
     required this.categoryId,
     required this.ingredient,
@@ -30,7 +28,6 @@ class Meals {
       id: "m1",
       cost: 1,
       description: "Ajoyib burger",
-      isLike: false,
       prepairingTime: "5 min",
       categoryId: 'c1',
       ingredient: ["go'sht", "bodring", "pomidor"],
@@ -41,7 +38,6 @@ class Meals {
       id: "m2",
       cost: 1,
       description: "Ajoyib polov",
-      isLike: false,
       prepairingTime: "5 min",
       categoryId: 'c2',
       ingredient: ["guruch ", "yog'", "sabzi"],
@@ -52,7 +48,6 @@ class Meals {
       id: "m3",
       cost: 1,
       description: "Ajoyib pizza",
-      isLike: false,
       prepairingTime: "5 min",
       categoryId: 'c3',
       ingredient: ["un", "pomidor", "pishloq"],
@@ -63,18 +58,16 @@ class Meals {
       id: "m4",
       cost: 1,
       description: "Ajoyib burger",
-      isLike: false,
       prepairingTime: "5 min",
       categoryId: 'c4',
       ingredient: ["un", "pomidor", "pishloq"],
     ),
     Meal(
       title: "Coca cola",
-      imageUrls: ["assets/images/cola.png","assets/images/cola1.png","assets/images/cola2.png",],
+      imageUrls: ["assets/images/cola.png","assets/images/cola1.jpg","assets/images/cola2.jpg",],
       id: "m5",
       cost: 1,
       description: "Ajoyib burger",
-      isLike: false,
       prepairingTime: "5 min",
       categoryId: 'c5',
       ingredient: ["un", "pomidor", "pishloq"],
@@ -85,7 +78,6 @@ class Meals {
       id: "m5",
       cost: 1,
       description: "Ajoyib burger",
-      isLike: false,
       prepairingTime: "5 min",
       categoryId: 'c6',
       ingredient: ["un", "pomidor", "pishloq"],
@@ -95,4 +87,29 @@ class Meals {
   List<Meal> get list {
     return _list;
   }
+
+  List<Meal> _fovorites=[];
+  
+  List<Meal> get favorites{
+    return _fovorites;
+  }
+  
+  void toggleLike(String mealId){
+    final mealIndex=_fovorites.indexWhere((meal) => meal.id==mealId);
+    if(mealIndex<0){
+      favorites.add(list.firstWhere((meal) => meal.id==mealId));
+    }
+    else{
+      favorites.removeWhere((meal) => meal.id==mealId );
+    }
+    
+  }
+
+ void addMeal(Meal meal){
+    _list.add(meal);
+  }
+   void delete(String mealId){
+    _list.removeWhere((meal) => mealId==meal.id);
+   }
+
 }

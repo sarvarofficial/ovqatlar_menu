@@ -9,7 +9,7 @@ class CategoryMealScreen extends StatelessWidget {
    CategoryMealScreen({Key? key,required this.categories, required this.categoryMeals}) : super(key: key);
 
    void gotoCategoryScreen(BuildContext context){
-     Navigator.of(context).pushNamed(CategoryScreen.routName ,arguments:{
+     Navigator.of(context).pushNamed(CategoryScreen.routeName ,arguments:{
        "categoryTitle": categories.title,
        "categoryMeals": categoryMeals
      });

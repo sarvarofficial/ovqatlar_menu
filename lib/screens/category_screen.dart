@@ -3,10 +3,13 @@ import 'package:ovqatlar_menu/models/meal_model.dart';
 import 'package:ovqatlar_menu/widgets/meal_item.dart';
 
 class CategoryScreen extends StatelessWidget {
+  final Function toggleLike;
+  final Function isFavorite;
+
   CategoryScreen({
-    Key? key,
+    Key? key, required this.toggleLike, required this.isFavorite,
   }) : super(key: key);
-  static var routName = "/category-screen";
+  static var routeName = "/category-screen";
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class CategoryScreen extends StatelessWidget {
               return Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: MealItem(
-                    meals: meals[index],
+                    meals: meals[index],toggleLike:toggleLike,isFavorite:isFavorite
                   ));
             }));
   }

@@ -9,17 +9,16 @@ class HomePage extends StatelessWidget {
   final List<Meal> meals;
 
   HomePage({
-    Key? key,
-    required this.categories,
-    required this.meals,
-  }) : super(key: key);
+    Key? key, required this.categories, required this.meals,
 
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Ovqatlar menyusi"),
-      ),
+
       body: Container(
         child: GridView(
             padding: EdgeInsets.all(16),

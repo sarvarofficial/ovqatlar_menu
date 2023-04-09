@@ -11,7 +11,8 @@ class MealDetails extends StatefulWidget {
   @override
   State<MealDetails> createState() => _MealDetailsState();
 }
-int activeImageIndex=0;
+
+int activeImageIndex = 0;
 
 class _MealDetailsState extends State<MealDetails> {
   @override
@@ -27,41 +28,48 @@ class _MealDetailsState extends State<MealDetails> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CarouselSlider(
-              options: CarouselOptions(height: 250.0,viewportFraction: 1,
-              onPageChanged:(index,reason){
-                setState(() {
-                  activeImageIndex=index;
-                });
-              },
+              options: CarouselOptions(
+                height: 250.0,
+                viewportFraction: 1,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    activeImageIndex = index;
+                  });
+                },
                 initialPage: activeImageIndex,
-
               ),
               items: meals.imageUrls.map((image) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
                         width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-
-                        ),
-                        child: Image.asset(image,fit: BoxFit.cover,width: double.infinity,)
-                    );
+                        decoration: BoxDecoration(),
+                        child: image.startsWith("assets/")
+                            ? Image.asset(
+                                image,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              )
+                            : Image.network(  image,fit: BoxFit.cover,width: double.infinity));
                   },
                 );
               }).toList(),
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.center,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: meals.imageUrls.map((image) {
-                final imageIndex=meals.imageUrls.indexOf(image);
+                final imageIndex = meals.imageUrls.indexOf(image);
                 return Container(
-                
-                margin: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                    color:activeImageIndex==imageIndex? Colors.black:Colors.grey,
-                    shape: BoxShape.circle),
-              );}).toList(),
+                  margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                      color: activeImageIndex == imageIndex
+                          ? Colors.black
+                          : Colors.grey,
+                      shape: BoxShape.circle),
+                );
+              }).toList(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -95,7 +103,6 @@ class _MealDetailsState extends State<MealDetails> {
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return const Divider(
-
                       height: 20,
                     );
                   },

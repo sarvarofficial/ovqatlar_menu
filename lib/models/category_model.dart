@@ -30,7 +30,7 @@ class Categories {
     ),
     Category(
       id: "c5",
-      title: "Icjimliklar",
+      title: "Ichimliklar",
       imageUrl: "assets/images/cola.png",
     ),
     Category(
